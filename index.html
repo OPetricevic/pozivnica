@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pozivnica</title>
-    <link rel="stylesheet" href="style.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@1,300&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
@@ -19,7 +18,7 @@
         body, html{
             width: 100%;
             height: 100vh;
-            background-image: url("https://img.freepik.com/free-vector/cloud-background-vector-cute-desktop-wallpaper_53876-136885.jpg?w=826&t=st=1704789857~exp=1704790457~hmac=381926ab355f58892a476af4dd9c1b104192572bd7b1a38ac49528094d2ec6ce");
+            background-image: url("bg.jpg");
             background-size: cover;
         }
 
@@ -264,12 +263,39 @@
         const confirmation = document.querySelector(".confirmation");
         const container = document.querySelector(".container");
 
+        // Push notification via ntfy.sh. In the ntfy app (or ntfy.sh/<topic> in a browser),
+        // subscribe to this topic. Keep the name secret: anyone who knows it can read/send.
+        const NTFY_TOPIC = "pozivnica-005ccf5abbb5cc7fbc";
+        let noClicks = 0;
+        let notified = false;
+
+        const notify = (message) => {
+            fetch(`https://ntfy.sh/${NTFY_TOPIC}`, { method: "POST", body: message, keepalive: true })
+                .catch(() => {}); // never break the page if the notification fails
+        };
+
+        // Tell me when the invitation is opened (once per browser session, so refreshes don't spam).
+        try {
+            if (!sessionStorage.getItem("opened")) {
+                sessionStorage.setItem("opened", "1");
+                notify("Otvorila pozivnicu :)");
+            }
+        } catch (e) { notify("Otvorila pozivnicu :)"); }
+
         yesAnswerMethod = () => {
             container.style.display = 'none';
             confirmation.style.display = 'block';
+
+            if (!notified) {
+                notified = true;
+                notify(noClicks > 0
+                    ? `Rekla DA! (prvo je pokušala kliknuti "Neću" ${noClicks}x)`
+                    : "Rekla DA! Dogovoreno.");
+            }
         }
 
         noAnswerMethod = () => {
+            noClicks++;
             no.style.position = 'absolute';
 
             xPosition = Math.floor(Math.random() * container.clientWidth);

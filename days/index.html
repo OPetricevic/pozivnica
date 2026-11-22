@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pozivnica</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@1,300&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bellota Text', sans-serif;
+        }
+
+        body, html{
+            width: 100%;
+            height: 100vh;
+            background-image: url("../bg.jpg");
+            background-size: cover;
+        }
+
+        .confirmation{
+            display: none;
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+
+        .confirmation h1{
+            font-style: bolder;
+            font-size: 50px;
+            font-weight: 700;
+            text-shadow: 0px 3px 6px rgb(147, 77, 77);
+            line-height: 70px;
+        }
+
+        .fix-gif{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 200px;
+        }
+
+        .fix-gifimg{
+            border-radius: 10px;
+            width: 384px;
+            height: 216px;
+            background-image: url("https://media1.tenor.com/m/2VprHA868S8AAAAC/yummy-desserts-desserts-milk-mocha.gif");
+            background-size: cover;
+        }
+
+        .container h1{
+            margin-bottom: 20px;
+            margin-top: 50px;
+            font-style: bolder;
+            font-size: 48px;
+            font-weight: 700;
+            text-shadow: 0px 3px 6px rgb(147, 77, 77);
+            line-height: 60px;
+        }
+
+        #fix{
+            margin-top: 30px;
+            border: none;
+            width: 400px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 10px;
+            background: none;
+            backdrop-filter: blur(5px);
+            border: 1px solid black;
+            font-weight: 550;
+        }
+
+        .whatsapp-link{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            width: 400px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 10px;
+            background: none;
+            backdrop-filter: blur(5px);
+            border: 1px solid black;
+            color: black;
+            font-weight: 550;
+            text-decoration: none;
+        }
+
+        .whatsapp-link:hover{
+            box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.449);
+        }
+
+        .container{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+
+        .gif{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 300px;
+        }
+
+        .gifimg{
+            border-radius: 10px;
+            width: 384px;
+            height: 254px;
+            background-image: url("https://media1.tenor.com/m/UAFrdZCt29YAAAAC/milk-and-mocha-waiting-for-reply.gif");
+            background-size: cover;
+        }
+
+        .answer-box{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px;
+            margin-top: 5px;
+            width: 100%;
+            height: 80px;
+            gap: 50px;
+        }
+
+        .answer{
+            border: none;
+            width: 100px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 10px;
+            background: none;
+            backdrop-filter: blur(5px);
+            border: 1px solid black;
+            font-weight: 550;
+        }
+
+        .answer:hover{
+            box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.449);
+        }
+
+        .days{
+            flex-wrap: wrap;
+            gap: 12px;
+            height: auto;
+        }
+
+        .days .answer{
+            width: auto;
+            min-width: 110px;
+            padding: 0 14px;
+            font-size: 26px;
+        }
+
+        @media screen and (max-width: 600px){
+            .container{
+                width: 100%;
+            }
+
+            .days .answer{
+                min-width: 90px;
+                font-size: 20px;
+            }
+
+            .container h1{
+                margin-top: 20px;
+                padding: 8px;
+                font-size: 33px;
+                line-height: 43px;
+            }
+
+            .confirmation h1{
+                font-size: 38px;
+                line-height: 52px;
+                padding: 8px;
+            }
+
+            .answer{
+                font-size: 20px;
+                padding: 5px;
+            }
+
+            .gifimg{
+                border-radius: 10px;
+                width: 300px;
+                height: 198px;
+                background-image: url("https://media1.tenor.com/m/UAFrdZCt29YAAAAC/milk-and-mocha-waiting-for-reply.gif");
+                background-size: cover;
+            }
+
+            .fix-gif{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 200px;
+            }
+
+            .fix-gifimg{
+                border-radius: 10px;
+                width: 300px;
+                height: 168px;
+                background-image: url("https://media1.tenor.com/m/2VprHA868S8AAAAC/yummy-desserts-desserts-milk-mocha.gif");
+                background-size: cover;
+            }
+
+            #fix{
+                margin-top: 30px;
+                border: none;
+                width: 250px;
+                height: 50px;
+                font-size: 24px;
+                border-radius: 10px;
+                background: none;
+                backdrop-filter: blur(5px);
+                border: 1px solid black;
+                font-weight: 550;
+            }
+
+            .whatsapp-link{
+                width: 250px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .confirmation{
+                display: none;
+                width: 100%;
+                height: 500px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">
+            <h1 id="question">Hoćemo napolje? Izaberi dan!</h1>
+        </div>
+        <div class="gif">
+            <div class="gifimg"></div>
+        </div>
+        <div class="answer-box days" id="days">
+            <!-- day buttons are generated from DAYS in the script below -->
+            <button class="answer" id="no">Neću</button>
+        </div>
+    </div>
+
+    <div class="confirmation">
+        <h1 id="confirmed">Jeeeeej!!! Dogovoreno</h1>
+        <div class="question">
+            <div class="fix-gif">
+                <div class="fix-gifimg"></div>
+            </div>
+            <a class="whatsapp-link" id="fix" href="https://wa.me/38762164626">Javi Omaru</a>
+        </div>
+    </div>
+
+    <script>
+        // ---- Settings: change these ----
+        const DAYS = ["Utorak", "Četvrtak", "Subota"];  // days she can pick from
+        const TIME = "18h";
+        // Push notification via ntfy.sh. In the ntfy app (or ntfy.sh/<topic> in a browser),
+        // subscribe to this topic. Keep the name secret: anyone who knows it can read/send.
+        const NTFY_TOPIC = "pozivnica-005ccf5abbb5cc7fbc";
+        // ---------------------------------
+
+        const no = document.querySelector("#no");
+        const daysBox = document.querySelector("#days");
+        const confirmation = document.querySelector(".confirmation");
+        const container = document.querySelector(".container");
+        let noClicks = 0;
+        let notified = false;
+
+        document.querySelector("#question").textContent = `Hoćemo napolje? Izaberi dan (${TIME})!`;
+
+        const notify = (message) => {
+            fetch(`https://ntfy.sh/${NTFY_TOPIC}`, { method: "POST", body: message, keepalive: true })
+                .catch(() => {}); // never break the page if the notification fails
+        };
+
+        // Tell me when the invitation is opened (once per browser session, so refreshes don't spam).
+        try {
+            if (!sessionStorage.getItem("opened")) {
+                sessionStorage.setItem("opened", "1");
+                notify("Otvorila pozivnicu :)");
+            }
+        } catch (e) { notify("Otvorila pozivnicu :)"); }
+
+        const pickDay = (day) => {
+            container.style.display = 'none';
+            confirmation.style.display = 'block';
+            document.querySelector("#confirmed").textContent = `Jeeeeej!!! ${day} u ${TIME}, dogovoreno`;
+
+            if (!notified) {
+                notified = true;
+                notify(`Rekla DA! Izabrala: ${day} u ${TIME}` +
+                    (noClicks > 0 ? ` (prvo je pokušala kliknuti "Neću" ${noClicks}x)` : ""));
+            }
+        };
+
+        DAYS.forEach((day) => {
+            const b = document.createElement("button");
+            b.className = "answer";
+            b.textContent = day;
+            b.addEventListener("click", () => pickDay(day));
+            daysBox.insertBefore(b, no);
+        });
+
+        noAnswerMethod = () => {
+            noClicks++;
+            no.style.position = 'absolute';
+
+            xPosition = Math.floor(Math.random() * container.clientWidth);
+            yPosition = Math.floor(Math.random() * container.clientHeight);
+
+            no.style.top = `${yPosition}px`;
+            no.style.left = `${xPosition}px`;
+        }
+
+        no.addEventListener('click', noAnswerMethod);
+
+    </script>
+</body>
+</html>
